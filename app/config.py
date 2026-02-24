@@ -1,12 +1,13 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from functools import lru_cache
+from pydantic import Field
 
 class Settings(BaseSettings):
-    database_url: str
+    database_url: str = Field(alias="DATABASE_URL")
 
     model_config = SettingsConfigDict(
         env_file=".env",
-        env_file_encoding="utf-8"
+        case_sensitive=False
     )
 
 @lru_cache
