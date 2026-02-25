@@ -3,7 +3,7 @@ from sqlalchemy.orm import sessionmaker, declarative_base
 from .config import get_settings
 
 settings = get_settings()
-
+print(">>> DATABASE_URL EN PRODUCCIÓN:", repr(settings.DATABASE_URL))
 DATABASE_URL = settings.DATABASE_URL
 
 if DATABASE_URL.startswith("postgres://"):
