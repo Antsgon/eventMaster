@@ -1,15 +1,16 @@
-import os
-from functools import lru_cache
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
-class Settings:
-    def __init__(self):
-        self.database_url = os.environ.get("DATABASE_URL")
+class Settings(BaseSettings):
+    DATABASE_URL: str
 
-        if not self.database_url:
-            raise ValueError("DATABASE_URL no está configurada")
+    model_config = SettingsConfigDict(
+        env_file=".env",
+        env_file_encoding="utf-8"
+    )
 
 
-@lru_cache
 def get_settings():
-    return Settings()
+    settings = Settings()
+    print("DATABASE_URL cargada:", settings.DATABASE_URL)
+    return settings

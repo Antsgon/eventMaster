@@ -7,7 +7,7 @@ from .config import get_settings
 settings = get_settings()
 
 # Crear conexión a PostgreSQL
-engine = create_engine(settings.database_url)
+engine = create_engine(settings.DATABASE_URL)
 
 # Crear fábrica de sesiones
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
