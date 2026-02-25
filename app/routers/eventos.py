@@ -30,7 +30,7 @@ def crear_evento(evento: schemas.EventoCreate, db: Session = Depends(get_db)):
     return db_evento
 
 
-# READ ALL - Obtener todos los eventos (con filtro opcional por ciudad)
+# READ ALL - Obtener todos los eventos
 @router.get("/", response_model=List[schemas.EventoConRecinto])
 def obtener_eventos(
         ciudad: Optional[str] = Query(None, description="Filtrar por ciudad del recinto"),

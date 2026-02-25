@@ -74,7 +74,7 @@ class EventoConRecinto(EventoResponse):
     recinto: RecintoResponse
 
 
-# ==================== COMPRA ====================
+# COMPRA
 
 class CompraTickets(BaseModel):
     """Para comprar tickets (PATCH)"""
