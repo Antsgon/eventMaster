@@ -12,5 +12,10 @@ class Settings(BaseSettings):
 
 def get_settings():
     settings = Settings()
-    print("DATABASE_URL cargada:", settings.DATABASE_URL)
+    url = settings.DATABASE_URL
+
+    if url.startswith("postgres://"):
+        url = url.replace("postgres://", "postgresql://", 1)
+
+    settings.DATABASE_URL = url
     return settings
